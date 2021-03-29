@@ -25,6 +25,11 @@ import './theme/variables.css';
 
 /*   Pages         */
 import Mailbox from './pages/Mailbox';
+import AdministrativeProcedure from './pages/AdministrativeProcedure';
+import Rights from './pages/Rights';
+import StudentAttention from './pages/StudentAttention';
+import WebSupport from './pages/WebSupport';
+
 
 const App: React.FC = () => (
   <IonApp>
@@ -37,6 +42,11 @@ const App: React.FC = () => (
           <Redirect to="/home" />
         </Route>
         <Route path="/mailbox" component={Mailbox} />
+        <Route path="/studentatention" component={StudentAttention} />
+        <Route path="/administrativeprocedure" component={AdministrativeProcedure} />
+        <Route path="/rigths" component={Rights} />
+        <Route path="/websupport" component={WebSupport} />
+
 
       </IonRouterOutlet>
     </IonReactRouter>

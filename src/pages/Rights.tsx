@@ -1,12 +1,12 @@
 import React from "react";
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import {IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonText} from "@ionic/react";
-import './Mailbox.css';
+import './Rights.css';
 
 
 defineCustomElements(window);
 
-const Mailbox: React.FC = () => {
+const Rights: React.FC = () => {
     return (
         <IonPage>
       <IonHeader>
@@ -21,4 +21,4 @@ const Mailbox: React.FC = () => {
     );
 };
 
-export default Mailbox;
+export default Rights;
