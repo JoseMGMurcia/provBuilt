@@ -1,6 +1,7 @@
 import React from "react";
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
-import {IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonText} from "@ionic/react";
+import {IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonText, IonLabel, IonList, IonRadioGroup, IonListHeader, IonItem, 
+        IonRadio, IonTextarea, IonItemDivider, IonButton, IonIcon} from "@ionic/react";
 import './Mailbox.css';
 
 
@@ -14,8 +15,8 @@ const Mailbox: React.FC = () => {
           <IonTitle>ITO Responde</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen color="dark">
-       
+      <IonContent fullscreen>
+      
       </IonContent>
     </IonPage>
     );

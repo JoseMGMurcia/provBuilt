@@ -33,6 +33,12 @@ const Home: React.FC = () => {
           </IonCol>
         </IonRow>
 
+        <IonCard onClick={() => {history.push('/websupport')}}>
+          <img src="/assets/images/web-support.svg" alt="Web support"/>  
+          <IonCardTitle>Ayuda con el soporte web</IonCardTitle>
+          <IonCardSubtitle>Recibe ayuda con posibles problemas que hayas tenido en la web.</IonCardSubtitle>
+        </IonCard>  
+
         <IonCard onClick={() => {history.push('/mailbox')}}>
           <img src="/assets/images/mailbox-suggestions.svg" alt="Mailbox Suggestions"/>  
           <IonCardTitle>Buzón de sugerencias</IonCardTitle>
@@ -57,11 +63,7 @@ const Home: React.FC = () => {
           <IonCardSubtitle>Derechos de desistimiento y garantía de resultados.</IonCardSubtitle>
         </IonCard> 
 
-        <IonCard onClick={() => {history.push('/websupport')}}>
-          <img src="/assets/images/web-support.svg" alt="Web support"/>  
-          <IonCardTitle>Ayuda con el soporte web</IonCardTitle>
-          <IonCardSubtitle>Recibe ayuda con posibles problemas que hayas tenido en la web.</IonCardSubtitle>
-        </IonCard>  
+
  
       </IonContent>
     </IonPage>
