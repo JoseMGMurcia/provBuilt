@@ -1,6 +1,6 @@
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { useHistory } from 'react-router-dom';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonText, IonCard, IonCardSubtitle, IonCardTitle, IonRow, IonCol} from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonText, IonCard, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonThumbnail} from '@ionic/react';
 import './Home.css';
 
 defineCustomElements(window);
@@ -17,11 +17,7 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen color="dark">
-      <IonRow >
-          <IonCol className="align-items-center">
-            <IonImg src="/assets/images/ito-responds.svg" alt="Ito Responds"/>
-          </IonCol>
-        </IonRow>
+        <IonImg src="/assets/images/ito-responds.svg" alt="Ito Responds" />
         <IonRow>
           <IonCol className="ion-text-center">
             <IonText color="primary"><h3>¡Bienvenido a ITO Responde!</h3></IonText><br />
