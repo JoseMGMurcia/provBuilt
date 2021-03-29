@@ -1,0 +1,7 @@
+{
+  "name": "provBuild",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
