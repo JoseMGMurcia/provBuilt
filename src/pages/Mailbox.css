@@ -1,0 +1,8 @@
+ion-card{
+   margin: 2%;
+}
+ion-textarea{
+    border: solid 0.75px #3A3A3A;
+    border-radius: 5px;
+    margin: auto;
+}

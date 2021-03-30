@@ -13,8 +13,13 @@ ion-img {
     width: 30% !important;
     max-width: 130px;
     margin:auto;
-    margin-top: 8%;
+    margin-top: 5%;
  }
  ion-row {
-     max-height: 8%;
+    opacity: 0.5;
+    background-color: burlywood;
+    font-size: small;
+    padding-top: 2%;
+    padding-inline:2%;
  }
+

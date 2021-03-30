@@ -1,13 +1,15 @@
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { useHistory } from 'react-router-dom';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonText, IonCard, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonThumbnail} from '@ionic/react';
+import React, { useState } from 'react';
+import { IonContent,IonAlert, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonText, IonCard, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonIcon} from '@ionic/react';
 import './Home.css';
+import { alertCircle } from 'ionicons/icons';
 
 defineCustomElements(window);
-
 const Home: React.FC = () => {
 
   const history = useHistory();
+  const [showAlert, setShowAlert] = useState(true);
 
   return (
     <IonPage>
@@ -15,20 +17,23 @@ const Home: React.FC = () => {
         <IonToolbar>
           <IonTitle>ITO Responde</IonTitle>
         </IonToolbar>
+        <IonAlert
+          isOpen={showAlert}
+          onDidDismiss={() => setShowAlert(false)}
+          cssClass=''
+          header={'IMPORTANTE:'}
+          message={'El soporte para asuntos relacionados con dudas sobre el contenido de las lecciones y las tareas de los módulos, será prestado por los Tutores a través del canal correspondiente de Slack #Preguntas-dudas y en las Sesiones Q&A. No serán respondidas por ITO Responde.'}
+          buttons={['OK']}
+        />
       </IonHeader>
-      <IonContent fullscreen color="dark">
+      <IonContent fullscreen color="dark" className="ion-text-center">
+        <IonRow className="ion-text-justify">
+          <IonText color="primary"><IonIcon color="primary" icon={alertCircle}/> <b> IMPORTANTE:</b> El soporte para asuntos relacionados con dudas sobre el contenido de las lecciones y las tareas de los módulos, será prestado por los Tutores a través del canal correspondiente de Slack #Preguntas-dudas y en las Sesiones Q&A. No serán respondidas por ITO Responde.</IonText><br />
+        </IonRow>
         <IonImg src="/assets/images/ito-responds.svg" alt="Ito Responds" />
-        <IonRow>
-          <IonCol className="ion-text-center">
-            <IonText color="primary"><h3>¡Bienvenido a ITO Responde!</h3></IonText><br />
-          </IonCol>
-        </IonRow>
-        <IonRow >
-          <IonCol className="ion-text-center">
-            <IonText color="primary" text-center>¡Elige el tipo de consulta que deseas hacer y nosotros te ayudamos!</IonText>
-          </IonCol>
-        </IonRow>
-
+        <IonText color="primary"><h3>¡Bienvenido a ITO Responde!</h3></IonText>
+        <IonText color="primary" text-center>¡Elige el tipo de consulta que deseas hacer y nosotros te ayudamos!</IonText>
+       
         <IonCard onClick={() => {history.push('/websupport')}}>
           <img src="/assets/images/web-support.svg" alt="Web support"/>  
           <IonCardTitle>Ayuda con el soporte web</IonCardTitle>
@@ -47,7 +52,7 @@ const Home: React.FC = () => {
           <IonCardSubtitle>Recibe atención personalizada sobre cualquier incidente que hayas podido tener.</IonCardSubtitle>
         </IonCard> 
 
-        <IonCard onClick={() => {history.push('/administrativeprocedure')}}>
+        <IonCard onClick={() => {history.push('/AdministrativeProcedure')}}>
           <img src="/assets/images/administrative-procedure.svg" alt="Administrative procedure"/>  
           <IonCardTitle>Gestión administrativa</IonCardTitle>
           <IonCardSubtitle>Pregúntanos sobre cualquier detalle relacionado con tu máster.</IonCardSubtitle>
