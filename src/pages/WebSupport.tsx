@@ -1,8 +1,8 @@
 import React from "react";
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import {IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonText, IonLabel, IonList, IonRadioGroup, IonListHeader, IonItem, 
-  IonRadio, IonTextarea, IonItemDivider, IonButton, IonIcon} from "@ionic/react";
-import './WebSupport.css';
+  IonRadio, IonTextarea, IonItemDivider, IonButton, IonCard, IonButtons, IonBackButton} from "@ionic/react";
+  import './SupporPage.css';
 
 
 defineCustomElements(window);
@@ -12,17 +12,23 @@ const WebSupport: React.FC = () => {
       <IonPage>
       <IonHeader>
         <IonToolbar>
+        <IonButtons slot="start">
+          <IonBackButton />
+        </IonButtons>
           <IonTitle>ITO Responde</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <img src="/assets/images/web-support.svg" alt="Mailbox Suggestions"/>  
-        <IonText color="primary">Ayuda con el soporte web</IonText>
-        <IonText color="primary">Recibe ayuda con posibles problemas que hayas tenido en la web.</IonText>
-        <IonList>
+
+      <IonContent fullscreen color="dark" className="ion-text-center">
+
+      <IonCard>
+      <img src="/assets/images/web-support.svg" alt="Mailbox Suggestions"/>  
+        <IonText color="primary"><h2>Ayuda con el soporte web</h2></IonText>
+        <IonText color="primary">Recibe ayuda con posibles problemas que hayas tenido en la web.</IonText><br></br><br></br>
+        <IonList className="ion-text-left">
           <IonRadioGroup>
             <IonListHeader>
-              <IonLabel>Seleccione el motivo de la consulta</IonLabel>
+              <IonLabel><IonText color="danger">*</IonText>Seleccione el motivo de la consulta</IonLabel>
             </IonListHeader>
 
             <IonItem>
@@ -62,8 +68,12 @@ const WebSupport: React.FC = () => {
           </IonRadioGroup>
          </IonList>
           
-         <IonLabel>Cuentanos brevemente como podemos ayudarte</IonLabel>
-         <IonTextarea rows={6} placeholder="Escribe aqui tu mensaje" onIonChange={e => console.log("sending messaje") }></IonTextarea>
+         <IonLabel><IonText color="danger">*</IonText>Cuentanos brevemente como podemos ayudarte</IonLabel>
+         <IonTextarea 
+          rows={6} 
+          placeholder="Escribe aqui tu mensaje" 
+          onIonChange={e => console.log("sending messaje") }>
+        </IonTextarea>
 
 
          <IonItemDivider/>
@@ -72,6 +82,14 @@ const WebSupport: React.FC = () => {
           <IonButton slot="end" color="tertiary">CANCELAR</IonButton>
           <IonButton slot="end" color="primary">ENVIAR</IonButton>
          </IonToolbar>
+        </IonCard>
+
+
+
+
+
+       
+   
 
       </IonContent>
     </IonPage>

@@ -1,22 +1,71 @@
 import React from "react";
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
-import {IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonText} from "@ionic/react";
-import './Rights.css';
+import {IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonText, IonLabel, IonCard, 
+         IonTextarea, IonButton, IonButtons, IonBackButton, IonItemDivider, IonImg } from "@ionic/react";
+import { useHistory } from 'react-router-dom';
 
 
 defineCustomElements(window);
 
 const Rights: React.FC = () => {
+
+  const history = useHistory();
+
     return (
         <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>ITO Responde</IonTitle>
+        <IonButtons slot="start">
+          <IonBackButton />
+        </IonButtons>
+          <IonTitle>Derechos y garantía</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen color="dark">
+      <IonContent fullscreen color="dark" className="ion-text-center">
        
-      </IonContent>
+
+     
+        <IonImg src="/assets/images/rights-and-warranty.svg" alt="Mailbox Suggestions"/>  
+        <IonText color="primary"><h2>Derechos y garantía</h2></IonText>
+        <IonText color="primary">Derechos de desistimiento y garantía de resultados.</IonText><br/><br/>
+        
+      <IonCard>
+        <IonText color="primary" ><h3 >Derechos y garantía</h3></IonText>
+        <IonText color="primary" className="ion-text-justify" >
+          <h6>El alumno acepta expresamente que NO podrá ejercitar dicho derecho,
+              de desistimiento, una vez transcurridos los 14 días naturales desde 
+              el pago total o el pago del primer plazo si ésta es la forma elegida.
+        </h6></IonText>
+          <IonButton color="primary"onClick={() => {history.push("/rigths/withdrawal")}}>DERECHO DE DESISTIMIENTO</IonButton>
+          <br/><IonText color="primary">Puedes revisar los requisitos <a href="">aqui</a></IonText><br/>
+      </IonCard>
+      <IonCard>
+        <IonText color="primary"><h3>Garantía de resultados</h3></IonText>
+        <IonText color="primary" className="ion-text-justify" >
+          <h6>Para ejercer esta garantía contarás con 15 días naturales a partir de 
+            que acabe el máster para demostrarnos que has seguido el paso a paso 
+            propuesto por el ITO y no has conseguido ningún cliente de pago.
+        </h6></IonText>
+          <IonButton color="tertiary" disabled>GARANTÍA DE RESULTADOS</IonButton>
+          <br/><IonText color="primary">Puedes revisar los requisitos <a href="">aqui</a></IonText><br/>
+      </IonCard>
+      <IonCard className="ion-text-start">
+        <IonLabel > <IonText color="danger">*</IonText>¿Tienes alguna duda? Escríbenos y te responderemos.</IonLabel>
+        <IonTextarea 
+          rows={6} 
+          placeholder="Escribe aqui tu mensaje" 
+          onIonChange={e => console.log("sending messaje") }>
+        </IonTextarea>
+
+        <IonItemDivider/>
+
+         <IonToolbar>
+          <IonButton slot="end" color="tertiary">CANCELAR</IonButton>
+          <IonButton slot="end" color="primary">ENVIAR</IonButton>
+         </IonToolbar>
+
+        </IonCard>
+       </IonContent>
     </IonPage>
     );
 };

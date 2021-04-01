@@ -1,7 +1,6 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -24,9 +23,11 @@ import './theme/variables.css';
 
 
 /*   Pages         */
+import Home from './pages/Home';
 import Mailbox from './pages/Mailbox';
 import AdministrativeProcedure from './pages/AdministrativeProcedure';
 import Rights from './pages/Rights';
+import Withdrawal from './pages/Withdrawal';
 import StudentAttention from './pages/StudentAttention';
 import WebSupport from './pages/WebSupport';
 
@@ -44,7 +45,8 @@ const App: React.FC = () => (
         <Route path="/mailbox" component={Mailbox} />
         <Route path="/studentatention" component={StudentAttention} />
         <Route path="/administrativeprocedure" component={AdministrativeProcedure} />
-        <Route path="/rigths" component={Rights} />
+        <Route exact path="/rigths" component={Rights} />
+        <Route path="/rigths/withdrawal" component={Withdrawal} />
         <Route path="/websupport" component={WebSupport} />
 
 
