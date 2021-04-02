@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import {IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonText, IonLabel, IonList, IonRadioGroup, IonListHeader, IonItem, 
-  IonRadio, IonTextarea, IonItemDivider, IonButton, IonCard, IonButtons, IonBackButton} from "@ionic/react";
-  import './SupporPage.css';
+  IonRadio, IonTextarea, IonItemDivider, IonButton, IonCard, IonButtons, IonBackButton, IonModal} from "@ionic/react";
+import './SupporPage.css';
+import ModalConfirm from '../components/ModalConfirm';
+
 
 
 defineCustomElements(window);
 
 const WebSupport: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+  const history = useHistory();
+
+  async function closeDialog() {
+    await setShowModal(false);
+  }
     return (
       <IonPage>
       <IonHeader>
@@ -20,6 +29,14 @@ const WebSupport: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen color="dark" className="ion-text-center">
+
+      <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
+        <ModalConfirm 
+            closeAction={closeDialog}
+            okAction ={() => {setShowModal(false); history.push('/')}}
+            text="¿Seguro que desea cancelar, se perderán todos los datos?"
+            title="Cancelar"/>
+      </IonModal>
 
       <IonCard>
       <img src="/assets/images/web-support.svg" alt="Mailbox Suggestions"/>  
@@ -79,7 +96,7 @@ const WebSupport: React.FC = () => {
          <IonItemDivider/>
          <IonToolbar>
         
-          <IonButton slot="end" color="tertiary">CANCELAR</IonButton>
+         <IonButton slot="end" color="tertiary" onClick={() => setShowModal(true)}>CANCELAR</IonButton>
           <IonButton slot="end" color="primary">ENVIAR</IonButton>
          </IonToolbar>
         </IonCard>

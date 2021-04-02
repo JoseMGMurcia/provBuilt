@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import {IonContent, IonPage, IonHeader, IonToolbar, IonTitle, IonText, IonLabel, IonCard, 
-        IonTextarea, IonButton, IonButtons, IonBackButton, IonItemDivider } from "@ionic/react";
+        IonTextarea, IonButton, IonButtons, IonBackButton, IonItemDivider, IonModal } from "@ionic/react";
 import './SupporPage.css';
+import ModalConfirm from '../components/ModalConfirm';
 
 
 defineCustomElements(window);
 
 const AdministrativeProcedure: React.FC = () => {
+
+  const [showModal, setShowModal] = useState(false);
+  const history = useHistory();
+
+  async function closeDialog() {
+    await setShowModal(false);
+  }
     return (
       <IonPage>
       <IonHeader>
@@ -19,6 +28,15 @@ const AdministrativeProcedure: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen color="dark" className="ion-text-center">
+
+      <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
+        <ModalConfirm 
+            closeAction={closeDialog}
+            okAction ={() => {setShowModal(false); history.push('/')}}
+            text="¿Seguro que desea cancelar, se perderán todos los datos?"
+            title="Cancelar"/>
+      </IonModal>
+
       <IonCard>
       <img src="/assets/images/administrative-procedure.svg" alt="Administrative procedure"/>  
         <IonText color="primary"><h2>Gestión administrativa</h2></IonText>
@@ -35,7 +53,7 @@ const AdministrativeProcedure: React.FC = () => {
         <IonItemDivider/>
 
          <IonToolbar>
-          <IonButton slot="end" color="tertiary">CANCELAR</IonButton>
+         <IonButton slot="end" color="tertiary" onClick={() => setShowModal(true)}>CANCELAR</IonButton>
           <IonButton slot="end" color="primary">ENVIAR</IonButton>
          </IonToolbar>
         </IonCard>
