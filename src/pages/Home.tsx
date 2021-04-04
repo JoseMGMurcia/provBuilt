@@ -1,7 +1,7 @@
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
-import { IonContent,IonAlert, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonText, IonCard, IonCardSubtitle, IonCardTitle, IonRow, IonButton, IonIcon} from '@ionic/react';
+import { IonContent,IonAlert, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonText, IonCard, IonCardSubtitle, IonCardTitle, IonRow, IonButton, IonIcon, IonButtons, IonMenuButton} from '@ionic/react';
 import './Home.css';
 import { alertCircle, search } from 'ionicons/icons';
 
@@ -15,6 +15,9 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+          <IonButtons color="primary" slot="start">
+            <IonMenuButton />
+          </IonButtons>
           <IonTitle>ITO Responde</IonTitle>
           <IonButton slot="end" color="tertiary" className="no-shadow">
             <IonIcon  icon={search} slot="icon-only" ></IonIcon>
