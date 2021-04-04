@@ -1,9 +1,9 @@
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
-import { IonContent,IonAlert, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonText, IonCard, IonCardSubtitle, IonCardTitle, IonRow, IonCol, IonIcon} from '@ionic/react';
+import { IonContent,IonAlert, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonText, IonCard, IonCardSubtitle, IonCardTitle, IonRow, IonButton, IonIcon} from '@ionic/react';
 import './Home.css';
-import { alertCircle } from 'ionicons/icons';
+import { alertCircle, search } from 'ionicons/icons';
 
 defineCustomElements(window);
 const Home: React.FC = () => {
@@ -16,6 +16,9 @@ const Home: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>ITO Responde</IonTitle>
+          <IonButton slot="end" color="tertiary" className="no-shadow">
+            <IonIcon  icon={search} slot="icon-only" ></IonIcon>
+          </IonButton>
         </IonToolbar>
         <IonAlert
           isOpen={showAlert}

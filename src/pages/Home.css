@@ -22,4 +22,6 @@ ion-img {
     padding-top: 2%;
     padding-inline:2%;
  }
-
+ .no-shadow{
+    --box-shadow:none
+ }
