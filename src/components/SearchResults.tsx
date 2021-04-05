@@ -71,23 +71,23 @@ export const SearchResults = () => {
         </IonToolbar>
         {results.map((result) => (
 
-         <IonList className="ion-margin">
-             <IonListHeader><h3>{result.type}</h3></IonListHeader>
-            <IonItem > 
-                <IonList >
-                    {result.list.map((resultList) => (
-                        
-                            <IonItem color="tertiary">
-                                <IonLabel>
-                                    <h2>{resultList.name}</h2>
-                                    <h6>{resultList.text}</h6>
-                                </IonLabel>
-                            </IonItem>
-                    ))}
-                </IonList>
-            </IonItem>
+            <IonList className="ion-margin">
+                <IonListHeader><h3>{result.type}</h3></IonListHeader>
+                <IonItem > 
+                    <IonList >
+                        {result.list.map((resultList) => (
 
-        </IonList>
+                                <IonItem color="tertiary"  className="ion-margin">
+                                    <IonLabel>
+                                        <h2>{resultList.name}</h2>
+                                        <h6>{resultList.text}</h6>
+                                    </IonLabel>
+                                </IonItem>
+
+                        ))}
+                    </IonList>
+                </IonItem>
+            </IonList>
         ))}
 
 
