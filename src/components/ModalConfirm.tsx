@@ -39,18 +39,3 @@ export default ({closeAction, okAction, text, title}: { closeAction: Function, o
 )
 
 
-// export const ModalConfirm: React.FC = () => {
-//   const [showModal, setShowModal] = useState(false);
-
-//   return (
-//     <IonContent>
-//       <IonModal 
-//         isOpen={showModal} 
-//         swipeToClose={true}>
-//         <p>This is modal content</p>
-//         <IonButton onClick={() => setShowModal(false)}>Close Modal</IonButton>
-//       </IonModal>
-//       <IonButton onClick={() => setShowModal(true)}>Show Modal</IonButton>
-//     </IonContent>
-//   );
-// };

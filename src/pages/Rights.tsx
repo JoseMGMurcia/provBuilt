@@ -39,7 +39,7 @@ const Rights: React.FC = () => {
 
         <IonImg src="/assets/images/rights-and-warranty.svg" alt="Mailbox Suggestions"/>  
         <IonText color="primary"><h2>Derechos y garantía</h2></IonText>
-        <IonText color="primary">Derechos de desistimiento y garantía de resultados.</IonText><br/><br/>
+        <IonText color="primary"><h6>Derechos de desistimiento y garantía de resultados.</h6></IonText>
         
       <IonCard>
         <IonText color="primary" ><h3 >Derechos y garantía</h3></IonText>
@@ -49,7 +49,7 @@ const Rights: React.FC = () => {
               el pago total o el pago del primer plazo si ésta es la forma elegida.
         </h6></IonText>
           <IonButton color="primary"onClick={() => {history.push("/rigths/withdrawal")}}>DERECHO DE DESISTIMIENTO</IonButton>
-          <br/><IonText color="primary" className="ion-margin-top">Puedes revisar los requisitos <a href="">aqui</a></IonText><br/>
+          <IonText color="primary"><h6>Puedes revisar los requisitos <a href="">aqui</a></h6></IonText>
       </IonCard>
       <IonCard>
         <IonText color="primary"><h3>Garantía de resultados</h3></IonText>
@@ -59,7 +59,7 @@ const Rights: React.FC = () => {
             propuesto por el ITO y no has conseguido ningún cliente de pago.
         </h6></IonText>
           <IonButton color="tertiary" disabled>GARANTÍA DE RESULTADOS</IonButton>
-          <br/><IonText color="primary">Puedes revisar los requisitos <a href="">aqui</a></IonText><br/>
+          <IonText color="primary"><h6>Puedes revisar los requisitos <a href="">aqui</a></h6></IonText>
       </IonCard>
       <IonCard className="ion-text-start">
         <IonLabel > <IonText color="danger">*</IonText>¿Tienes alguna duda? Escríbenos y te responderemos.</IonLabel>

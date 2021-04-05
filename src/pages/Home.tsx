@@ -1,15 +1,22 @@
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
-import { IonContent,IonAlert, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonText, IonCard, IonCardSubtitle, IonCardTitle, IonRow, IonButton, IonIcon, IonButtons, IonMenuButton} from '@ionic/react';
+import { IonContent,IonAlert, IonHeader, IonPage, IonTitle, IonToolbar, IonImg, IonText, IonCard, IonCardSubtitle, IonCardTitle, IonRow,
+     IonButton, IonIcon, IonButtons, IonMenuButton, IonModal} from '@ionic/react';
 import './Home.css';
-import { alertCircle, search } from 'ionicons/icons';
+import { search, warning } from 'ionicons/icons';
+import SearchResults from '../components/SearchResults';
 
 defineCustomElements(window);
 const Home: React.FC = () => {
 
   const history = useHistory();
   const [showAlert, setShowAlert] = useState(true);
+
+  const [showModal, setShowModal] = useState(false);
+  async function closeDialog() {
+    await setShowModal(false);
+  }
 
   return (
     <IonPage>
@@ -19,7 +26,7 @@ const Home: React.FC = () => {
             <IonMenuButton />
           </IonButtons>
           <IonTitle>ITO Responde</IonTitle>
-          <IonButton slot="end" color="tertiary" className="no-shadow">
+          <IonButton slot="end" color="tertiary" className="no-shadow"  onClick={() => setShowModal(true)}>
             <IonIcon  icon={search} slot="icon-only" ></IonIcon>
           </IonButton>
         </IonToolbar>
@@ -33,12 +40,21 @@ const Home: React.FC = () => {
         />
       </IonHeader>
       <IonContent fullscreen color="dark" className="ion-text-center">
+
+
+      <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
+        <SearchResults />
+      </IonModal>
+
         <IonRow className="ion-text-justify">
-          <IonText color="primary"><IonIcon color="primary" icon={alertCircle}/> <b> IMPORTANTE:</b> El soporte para asuntos relacionados con dudas sobre el contenido de las lecciones y las tareas de los módulos, será prestado por los Tutores a través del canal correspondiente de Slack #Preguntas-dudas y en las Sesiones Q&A. No serán respondidas por ITO Responde.</IonText><br />
+          <IonText color="primary"><IonIcon color="primary" icon={warning}/> <b> IMPORTANTE:</b> 
+            El soporte para asuntos relacionados con dudas sobre el contenido de las lecciones y las tareas de los módulos, 
+            será prestado por los Tutores a través del canal correspondiente de Slack #Preguntas-dudas y en las Sesiones Q&A. 
+            No serán respondidas por ITO Responde.<br/></IonText>
         </IonRow>
         <IonImg src="/assets/images/ito-responds.svg" alt="Ito Responds" />
         <IonText color="primary"><h3>¡Bienvenido a ITO Responde!</h3></IonText>
-        <IonText color="primary" text-center>¡Elige el tipo de consulta que deseas hacer y nosotros te ayudamos!</IonText>
+        <IonText color="primary" text-center><h6>¡Elige el tipo de consulta que deseas hacer y nosotros te ayudamos!</h6></IonText>
        
         <IonCard onClick={() => {history.push('/websupport')}}>
           <img src="/assets/images/web-support.svg" alt="Web support"/>  
