@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonButton, IonContent, IonListHeader, IonToolbar, IonItem, IonList, IonSearchbar, IonLabel } from '@ionic/react';
+import { IonButton, IonContent, IonListHeader, IonToolbar, IonItem, IonList, IonSearchbar, IonLabel, IonIcon } from '@ionic/react';
 
 
 export const SearchResults = () => {
@@ -59,43 +59,44 @@ export const SearchResults = () => {
         
     ]
 
+    function close() {
+        console.log("closing");
+    }
 
 
        return <>
-      <IonContent className="ion-padding">
-        <IonToolbar>
-                <IonSearchbar slot="start" 
-                value={searchText} onIonChange={e => setSearchText(e.detail.value!)} 
-                placeholder="Buscar..." 
-                showCancelButton="focus"/>
-        </IonToolbar>
-        {results.map((result) => (
+        <IonContent className="ion-padding">
+            <IonToolbar>
+                    <IonSearchbar 
+                        slot="end" 
+                        value={searchText} onIonChange={e => setSearchText(e.detail.value!)} 
+                        placeholder="Buscar..." 
+                        showCancelButton="focus"/>
+                    <IonButton slot="start"  color="tertiary" className="no-shadow" onClick={() => close()}>
+                        <IonIcon name="close" slot="icon-only"/>
+                    </IonButton>
+            </IonToolbar>
 
             <IonList className="ion-margin">
-                <IonListHeader><h3>{result.type}</h3></IonListHeader>
-                <IonItem > 
-                    <IonList >
-                        {result.list.map((resultList) => (
-
-                                <IonItem color="tertiary"  className="ion-margin">
-                                    <IonLabel>
-                                        <h2>{resultList.name}</h2>
-                                        <h6>{resultList.text}</h6>
-                                    </IonLabel>
-                                </IonItem>
-
-                        ))}
-                    </IonList>
-                </IonItem>
+                {results.map((result) => (
+                    <IonItem key={result.type}> 
+                        <IonLabel><h3>{result.type}</h3>
+                            <IonList>
+                                {result.list.map((resultList) => (
+                                    <IonItem color="tertiary"  className="ion-margin" key={result.type+resultList.name}>
+                                        <IonLabel>
+                                            <h2>{resultList.name}</h2>
+                                            <h6>{resultList.text}</h6>
+                                        </IonLabel>
+                                    </IonItem>
+                                ))}
+                            </IonList>
+                        </IonLabel>
+                    </IonItem>
+                ))}
             </IonList>
-        ))}
-
-
-
-
-       
-      </IonContent>
+        </IonContent>
        </>
    }
 
-export default SearchResults
+export default SearchResults;

@@ -43,7 +43,7 @@ const Home: React.FC = () => {
 
 
       <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
-        <SearchResults />
+        <SearchResults   />
       </IonModal>
 
         <IonRow className="ion-text-justify">
