@@ -20,8 +20,12 @@ ion-img {
     background-color: burlywood;
     font-size: small;
     padding-top: 2%;
+    padding-bottom: 2%;
     padding-inline:2%;
  }
  .no-shadow{
     --box-shadow:none
  }
+.text-prin{
+    margin: 2%;
+}

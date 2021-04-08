@@ -2,13 +2,17 @@
   width: 100% !important;
   margin:auto;
 }
-ion-list{
-  --ion-background-color:#3A3A3A;
-}
 .list-menu{
   height:85%;
+  --ion-background-color:#3A3A3A;
+}
+.list-supp{
+  --ion-background-color:#3A3A3A;
 }
 .icon-supp{
   width: 17% !important;
   margin:auto;
+}
+ion-fab{
+  --ion-background-color:#3A3A3A;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { IonButton, IonContent, IonListHeader, IonToolbar, IonItem, IonList, IonSearchbar, IonLabel, IonIcon } from '@ionic/react';
+import { IonButton, IonContent, IonListHeader, IonToolbar, IonItem, IonList, IonSearchbar, IonLabel, IonIcon, IonTitle, IonItemDivider, IonCard } from '@ionic/react';
+import './Modal.css';
 
 
 export const SearchResults = () => {
@@ -66,20 +67,25 @@ export const SearchResults = () => {
 
        return <>
         <IonContent className="ion-padding">
+        <IonItemDivider>
+            <IonTitle  className="ion-text-justify">Busqueda</IonTitle>
+            <IonButton slot="end"  color="tertiary"  className="no-shadow"  onClick={() => close()}>
+                        <IonIcon name="close" slot="icon-only"/>
+                    </IonButton>
+        </IonItemDivider>
             <IonToolbar>
                     <IonSearchbar 
-                        slot="end" 
+                        slot="start" 
                         value={searchText} onIonChange={e => setSearchText(e.detail.value!)} 
                         placeholder="Buscar..." 
                         showCancelButton="focus"/>
-                    <IonButton slot="start"  color="tertiary" className="no-shadow" onClick={() => close()}>
-                        <IonIcon name="close" slot="icon-only"/>
-                    </IonButton>
+                    
             </IonToolbar>
 
             <IonList className="ion-margin">
                 {results.map((result) => (
                     <IonItem key={result.type}> 
+                     <IonCard>
                         <IonLabel><h3>{result.type}</h3>
                             <IonList>
                                 {result.list.map((resultList) => (
@@ -92,6 +98,7 @@ export const SearchResults = () => {
                                 ))}
                             </IonList>
                         </IonLabel>
+                    </IonCard>
                     </IonItem>
                 ))}
             </IonList>

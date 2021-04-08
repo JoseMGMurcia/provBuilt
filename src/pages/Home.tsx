@@ -33,7 +33,7 @@ const Home: React.FC = () => {
         <IonAlert
           isOpen={showAlert}
           onDidDismiss={() => setShowAlert(false)}
-          cssClass=''
+          cssClass='alert'
           header={'IMPORTANTE:'}
           message={'El soporte para asuntos relacionados con dudas sobre el contenido de las lecciones y las tareas de los módulos, será prestado por los Tutores a través del canal correspondiente de Slack #Preguntas-dudas y en las Sesiones Q&A. No serán respondidas por ITO Responde.'}
           buttons={['OK']}
@@ -54,7 +54,7 @@ const Home: React.FC = () => {
         </IonRow>
         <IonImg src="/assets/images/ito-responds.svg" alt="Ito Responds" />
         <IonText color="primary"><h3>¡Bienvenido a ITO Responde!</h3></IonText>
-        <IonText color="primary" text-center><h6>¡Elige el tipo de consulta que deseas hacer y nosotros te ayudamos!</h6></IonText>
+        <IonText color="primary" text-center><h6 className="text-prin">¡Elige el tipo de consulta que deseas hacer y nosotros te ayudamos!</h6></IonText>
        
         <IonCard onClick={() => {history.push('/websupport')}}>
           <img src="/assets/images/web-support.svg" alt="Web support"/>  
