@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { IonButton, IonContent, IonListHeader, IonToolbar, IonItem, IonList, IonSearchbar, IonLabel, IonIcon, IonTitle, IonItemDivider, IonCard } from '@ionic/react';
+import { IonButton, IonContent, IonText, IonToolbar, IonItem, IonList, IonSearchbar, IonLabel, IonIcon, IonTitle, IonItemDivider, IonCard } from '@ionic/react';
 import './Modal.css';
+import { trash } from 'ionicons/icons';
 
 
 export const SearchResults = () => {
 
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState(false);
 
 
     const results = [
@@ -64,41 +65,40 @@ export const SearchResults = () => {
         console.log("closing");
     }
 
-
        return <>
-        <IonContent className="ion-padding">
-        <IonItemDivider>
+        <IonContent>
+        <IonToolbar className="yellowBack">
             <IonTitle  className="ion-text-justify">Busqueda</IonTitle>
-            <IonButton slot="end"  color="tertiary"  className="no-shadow"  onClick={() => close()}>
-                        <IonIcon name="close" slot="icon-only"/>
-                    </IonButton>
-        </IonItemDivider>
+            <IonButton slot="end"  color="warning"  className="no-shadow"  onClick={() => close()}>
+                <IonIcon icon={trash} slot="icon-only"></IonIcon>
+            </IonButton>
+        </IonToolbar>
             <IonToolbar>
-                    <IonSearchbar 
-                        slot="start" 
-                        value={searchText} onIonChange={e => setSearchText(e.detail.value!)} 
-                        placeholder="Buscar..." 
-                        showCancelButton="focus"/>
-                    
+                <IonSearchbar 
+                    slot="start" 
+                    onIonChange={(e) => 
+                            setSearchText(true)
+                    } 
+                    placeholder="Buscar..." 
+                    debounce={200}
+                    />
             </IonToolbar>
-
-            <IonList className="ion-margin">
+            <IonList hidden={searchText}>
                 {results.map((result) => (
-                    <IonItem key={result.type}> 
-                     <IonCard>
-                        <IonLabel><h3>{result.type}</h3>
-                            <IonList>
+                    <IonItem key={result.type} className="clearBorder"> 
+                        <IonCard>
+                            <IonText><h5>{result.type}</h5></IonText>
+                            <IonList >
                                 {result.list.map((resultList) => (
-                                    <IonItem color="tertiary"  className="ion-margin" key={result.type+resultList.name}>
-                                        <IonLabel>
+                                    <IonItem color="dark"  className="result" key={result.type+resultList.name}>
+                                        <IonLabel color="primary" >
                                             <h2>{resultList.name}</h2>
                                             <h6>{resultList.text}</h6>
-                                        </IonLabel>
+                                        </IonLabel >
                                     </IonItem>
                                 ))}
                             </IonList>
-                        </IonLabel>
-                    </IonCard>
+                        </IonCard>
                     </IonItem>
                 ))}
             </IonList>

@@ -16,3 +16,6 @@
 ion-fab{
   --ion-background-color:#3A3A3A;
 }
+.displaced {
+  margin-inline-start: 10%;
+}

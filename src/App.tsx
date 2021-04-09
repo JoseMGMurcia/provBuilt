@@ -1,7 +1,7 @@
 import {IonApp, IonMenu, IonHeader, IonToolbar, IonImg, IonContent, IonList, IonItem, IonIcon, IonLabel, IonMenuToggle, IonRouterOutlet, IonText, IonSelect, IonSelectOption, IonItemDivider, IonItemGroup, IonFabList, IonFabButton, IonFab } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import AppRoutes from './routes';
-import { home, flask, calendarClear, bulb, checkmarkCircle, documentText, videocam, tv } from 'ionicons/icons';
+import { home, flask, calendarClear, bulb, checkmarkCircle, documentText, videocam, tv, chevronDown, chevronUp } from 'ionicons/icons';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,19 +22,16 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import './App.css';
-import React from 'react';
+import React, { useState } from "react";
 
-function Saludar() {
-  console.log('Se hizo click');
-  return (
-    <IonItem  onClick={Saludar}  lines="none">
-    <IonIcon color="medium" slot="start" icon={calendarClear}/>
-    <IonText color="medium">Sesiones</IonText>
-  </IonItem>
-  );
-}
 
-const App: React.FC = () => (
+
+const App: React.FC = () => {
+
+const [arrowUp, setArrowUp] = useState(false);
+
+
+return (
   <IonApp >
     <IonReactRouter>
       <IonMenu contentId='main'>
@@ -57,12 +54,7 @@ const App: React.FC = () => (
                   <IonText color="medium">Curso</IonText>
                 </IonItem>
               </IonMenuToggle>
-              <IonMenuToggle >
-                <IonItem  routerLink="/home" routerDirection="none" lines="none">
-                  <IonIcon color="medium" slot="start" icon={calendarClear}/>
-                  <IonText color="medium">Sesiones</IonText>
-                </IonItem>
-              </IonMenuToggle>
+              
               <IonMenuToggle >
                 <IonItem  routerLink="/home" routerDirection="none" lines="none">
                   <IonIcon color="medium" slot="start" icon={bulb}/>
@@ -75,13 +67,14 @@ const App: React.FC = () => (
                   <IonText color="medium">Correcciones</IonText>
                 </IonItem>
               </IonMenuToggle>
-            </IonList>
-            <IonFab vertical="center" >
-              <IonItem  className="item-Sesions" routerLink="/home" routerDirection="none" lines="none">
+            <IonFab  >
+              <IonItem  routerLink="/home" routerDirection="none" lines="none" onClick={() => setArrowUp(!arrowUp)}>
                   <IonIcon color="medium" slot="start" icon={calendarClear}/>
-                  <IonText color="medium">Sesiones (opcional)</IonText>
-              </IonItem> 
-                <IonFabList>
+                  <IonText color="medium">Sesiones</IonText>
+                  <IonIcon icon={chevronDown} slot="end" color="medium" hidden={arrowUp}></IonIcon>
+                  <IonIcon icon={chevronUp} slot="end" color="medium" hidden={!arrowUp}></IonIcon>
+              </IonItem>
+                <IonFabList className="displaced">
                   <IonMenuToggle >
                     <IonItem  routerLink="/home" routerDirection="none" lines="none">
                       <IonIcon color="medium" slot="start" icon={documentText}/>
@@ -102,18 +95,17 @@ const App: React.FC = () => (
                   </IonMenuToggle>
                   </IonFabList>
                 </IonFab>
+                </IonList>
+
             <IonList className="list-supp">
-              <IonMenuToggle >
                 <IonItem  routerLink="/home" routerDirection="none" lines="none">
                   <IonImg className="icon-supp"src="/assets/icon/support_icon.png" alt="Ito Responds"/>
                 </IonItem>
-              </IonMenuToggle>
             </IonList>
           </IonContent>
       </IonMenu>
       <AppRoutes/>
     </IonReactRouter>
   </IonApp>
-);
-
+);}
 export default App;

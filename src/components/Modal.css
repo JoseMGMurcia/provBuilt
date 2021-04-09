@@ -1,3 +1,17 @@
 ion-modal {
   padding: 10% 5%;
+  --border-radius: 7px!important;
+}
+.yellowBack {
+  --background: #F0C551;
+}
+ion-card {
+  width: 98%;
+}
+.result {
+  margin: 2%;
+  border-radius: 8px;
+}
+.clearBorder {
+ border: none;
 }
